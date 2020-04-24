@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //phpinfo();
-    //exit();
     return view('welcome');
 });
+
+Route::get('/admin', 'Admin\DashboardController@index');
+//Route::resource('/admin/categories', 'Admin\CategoriesController');
