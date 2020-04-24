@@ -10,20 +10,19 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-    	$categories = Category::all();
-
-    	return view('admin.categories.index', ['categories'	=>	$categories]);
+        $categories = Category::all();
+        return view('admin.categories.index', ['categories'	=>	$categories]);
     }
 
     public function create()
     {
-    	return view('admin.categories.create');
+        return view('admin.categories.create');
     }
 
     public function store(Request $request)
     {
     	$this->validate($request, [
-    		'title'	=>	'required'
+    		'title'	=> 'required'
     	]);
 
     	Category::create($request->all());
@@ -43,9 +42,7 @@ class CategoriesController extends Controller
     	]);
 
     	$category = Category::find($id);
-
     	$category->update($request->all());
-
     	return redirect()->route('categories.index');
     }
 

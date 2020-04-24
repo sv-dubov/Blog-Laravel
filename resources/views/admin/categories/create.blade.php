@@ -1,14 +1,13 @@
 @extends('admin.layout')
 
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Hi! This is admin panel
-        <small>good words..</small>
+      Add category
+        <small>good words...</small>
       </h1>
     </section>
 
@@ -17,20 +16,28 @@
 
       <!-- Default box -->
       <div class="box">
+      {!! Form::open(['route' => 'categories.store']) !!}
         <div class="box-header with-border">
-          <h3 class="box-title">Main page</h3>
+          <h3 class="box-title">Add category</h3>
+          @include('admin.errors')
         </div>
         <div class="box-body">
-          Instruction for using admin panel
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="title">
+            </div>
         </div>
+      </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          some text
+          <button class="btn btn-default">Back</button>
+          <button class="btn btn-success pull-right">Add</button>
         </div>
         <!-- /.box-footer-->
+        {!! Form::close() !!}
       </div>
       <!-- /.box -->
-
     </section>
     <!-- /.content -->
   </div>
