@@ -37,7 +37,6 @@
                     <div class="form-group">
                         <label for="exampleInputFile">Avatar</label>
                         <input type="file" name="avatar" id="exampleInputFile">
-
                         <p class="help-block">Some message about format image...</p>
                     </div>
                 </div>
