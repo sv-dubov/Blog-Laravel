@@ -76,23 +76,27 @@ class User extends Authenticatable
 
     public function uploadAvatar($image)
     {
-        if($image == null) { return; }
+        if ($image == null) {
+            return;
+        }
 
-        Storage::delete('uploads/' . $this->image);
+        if ($this->avatar != null) {
+            Storage::delete('uploads/' . $this->avatar);
+        }
+
         $filename = Str::random(10) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
+        $image->storeAs('uploads', $filename);
+        $this->avatar = $filename;
         $this->save();
     }
 
     public function getImage()
     {
-        if($this-> image == null)
-        { 
-            return '/img/no-user-image.png';
+        if ($this->avatar == null) {
+            return '/img/no-image.png';
         }
 
-        return '/uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
     }
 
     public function makeAdmin()
@@ -109,8 +113,7 @@ class User extends Authenticatable
 
     public function toggleAdmin($value)
     {
-        if($value == null)
-        {
+        if ($value == null) {
             return $this->makeNormal();
         }
 
@@ -131,8 +134,7 @@ class User extends Authenticatable
 
     public function toggleBan($value)
     {
-        if($value == null)
-        {
+        if ($value == null) {
             return $this->unban();
         }
 
