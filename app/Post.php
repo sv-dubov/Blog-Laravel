@@ -6,30 +6,31 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class Post extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['titale', 'content'];
+    protected $fillable = ['title', 'content', 'date'];
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tags()
     {
         return $this->belongsToMany(
             Tag::class,
-            'post_tags',
+            'post_tag',
             'post_id',
             'tag_id'
         );
@@ -62,7 +63,7 @@ class Post extends Model
 
     public function remove()
     {
-        Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
         $this->delete();
     }
 
@@ -70,11 +71,19 @@ class Post extends Model
     {
         if($image == null) { return; }
 
-        Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
         $filename = Str::random(10) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
+        $image->storeAs('uploads', $filename);
         $this->image = $filename;
         $this->save();
+    }
+
+    public function removeImage()
+    {
+        if($this->image != null)
+        {
+            Storage::delete('uploads/' . $this->image);
+        }
     }
 
     public function getImage()
@@ -146,5 +155,41 @@ class Post extends Model
         }
 
         return $this->setFeatured();
+    }
+
+    public function setDateAttribute($value)
+    {
+        $date = Carbon::createFromFormat('d/m/y', $value)->format('Y/m/d');
+        $this->attributes['date'] = strtolower($date);
+    }
+
+    public function getDateAttribute($value)
+    {
+        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
+        return $date;
+    }
+
+    public function getCategoryTitle()
+    {
+        return ($this->category != null) 
+                ?   $this->category->title
+                :   'No category';
+    }
+
+    public function getTagsTitles()
+    {
+        return (!$this->tags->isEmpty())
+            ?   implode(', ', $this->tags->pluck('title')->all())
+            : 'No tags';
+    }
+
+    public function getCategoryID()
+    {
+        return $this->category != null ? $this->category->id : null;
+    }
+
+    public function getDate()
+    {
+        return Carbon::createFromFormat('d/m/y', $this->date)->format('F d, Y');
     }
 }
