@@ -12,7 +12,7 @@ class Post extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['title', 'content', 'date'];
+    protected $fillable = ['title', 'content', 'date', 'description'];
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
