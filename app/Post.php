@@ -230,6 +230,16 @@ class Post extends Model
         return self::orderBy('views','desc')->take(3)->get();
     }
 
+    public static function getFeaturedPosts()
+    {
+        return self::where('is_featured', 1)->take(3)->get();
+    }
+
+    public static function getRecentPosts()
+    {
+        return self::orderBy('date','desc')->take(3)->get();
+    }
+
     public function getComments()
     {
         return $this->comments()->where('status', 1)->get();
