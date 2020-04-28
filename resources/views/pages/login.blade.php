@@ -10,9 +10,9 @@
                 <div class="leave-comment mr0">
                     <!--leave comment-->
                     @if(session('status'))
-                        <div class="alert alert-danger">
-                            {{session('status')}}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{session('status')}}
+                    </div>
                     @endif
                     <h3 class="text-uppercase">Login</h3>
                     @include('admin.errors')
@@ -21,12 +21,12 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" value="{{old('email')}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
                         </div>
                         <button type="submit" class="btn send-btn">Login</button>
@@ -39,4 +39,5 @@
     </div>
 </div>
 <!-- end main content-->
+
 @endsection

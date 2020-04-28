@@ -30,6 +30,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn send-btn">Register</button>
+
                     </form>
                 </div>
                 <!--end leave comment-->
@@ -39,4 +40,5 @@
     </div>
 </div>
 <!-- end main content-->
+
 @endsection
