@@ -15,7 +15,7 @@ class Tag extends Model
     {
         return $this->belongsToMany(
             Post::class,
-            'post_tags',
+            'post_tag',
             'tag_id',
             'post_id'
         );
