@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/category/{slug}', 'HomeController@category')->name('category.show')
 Route::get('/register', 'AuthController@registerForm');
 Route::post('/register', 'AuthController@register');
 Route::get('/login', 'AuthController@loginForm');
+Route::post('/login', 'AuthController@login');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index');
@@ -29,3 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('/users', 'UsersController');
     Route::resource('/posts', 'PostsController');
 });
+
+//Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

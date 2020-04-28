@@ -44,9 +44,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
+                @if(Auth::check())
+                    <li><a href="contact.html">My profile</a></li>
+                @else
                     <li><a href="#">Register</a></li>
                     <li><a href="about-me.html">Login</a></li>
-                    <li><a href="contact.html">My profile</a></li>
+                @endif
                 </ul>
 
             </div>
