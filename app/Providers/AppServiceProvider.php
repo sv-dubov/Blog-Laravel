@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('admin._sidebar', function($view){
-            $view->with('newCommentsCount', Comment::where('status',0)->count());
+            $view->with('newCommentsCount', Comment::where('status', 0)->count());
         });
     }
 }

@@ -9,10 +9,10 @@
     <li><a href="{{route('categories.index')}}"><i class="fa fa-list-ul"></i> <span>Categories</span></a></li>
     <li><a href="{{route('tags.index')}}"><i class="fa fa-tags"></i> <span>Tags</span></a></li>
     <li>
-        <a href="#">
+        <a href="/admin/comments">
             <i class="fa fa-commenting"></i> <span>Comments</span>
             <span class="pull-right-container">
-                <small class="label pull-right bg-green">5</small>
+                <small class="label pull-right bg-red">{{$newCommentsCount}}</small>
             </span>
         </a>
     </li>
