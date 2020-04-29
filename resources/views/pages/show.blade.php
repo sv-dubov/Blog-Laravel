@@ -27,7 +27,7 @@
                             @endforeach
                         </div>
                         <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By Rubel On {{$post->getDate()}}</span>
+                            <span class="social-share-title pull-left text-capitalize">By {{$post->author->name}} on {{$post->getDate()}}</span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -40,10 +40,8 @@
                 </article>
                 <div class="top-comment">
                     <!--top comment-->
-                    <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
-                    <h4>Rubel Miah</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                        invidunt ut labore et dolore magna aliquyam erat.</p>
+                    <img src="{{$post->author->getImage()}}" class="pull-left img-circle" alt="" width="12%" height="12%">
+                    <h4>{{$post->author->name}}</h4>
                 </div>
                 <!--top comment end-->
                 <div class="row">
@@ -122,7 +120,7 @@
                 </div>
                 <!-- end bottom comment-->
 
-
+                @if(Auth::check())
                 <div class="leave-comment">
                     <!--leave comment-->
                     <h4>Leave a reply</h4>
@@ -150,8 +148,8 @@
                         </div>
                         <a href="#" class="btn send-btn">Post Comment</a>
                     </form>
-                </div>
-                <!--end leave comment-->
+                </div><!--end leave comment-->
+                @endif
             </div>
             @include('pages._sidebar')
         </div>
