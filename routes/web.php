@@ -19,8 +19,8 @@ Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
 Route::group(['middleware'	=>	'auth'], function(){
-	//Route::get('/profile', 'ProfileController@index');
-	//Route::post('/profile', 'ProfileController@store');
+	Route::get('/profile', 'ProfileController@index');
+	Route::post('/profile', 'ProfileController@store');
 	Route::get('/logout', 'AuthController@logout');
 	//Route::post('/comment', 'CommentsController@store');
 });
