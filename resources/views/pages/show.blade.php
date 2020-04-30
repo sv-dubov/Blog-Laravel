@@ -7,6 +7,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @if(session('status'))
+                <div class="alert alert-danger">
+                    {{session('status')}}
+                </div>
+                @endif
                 <article class="post">
                     <div class="post-thumb">
                         <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
