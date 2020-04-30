@@ -36,8 +36,10 @@
                             <th>ID</th>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Tags</th>
-                            <th>Image</th>
+                            <th>Status</th>
+                            <th>Created at</th>
+                            <!-- <th>Tags</th> -->
+                            <!-- <th>Image</th> -->
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,10 +49,12 @@
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
                             <td>{{$post->getCategoryTitle()}}</td>
-                            <td>{{$post->getTagsTitles()}}</td>
+                            <td>{{$post->status}}</td>
+                            <td>{{$post->created_at}}</td>
+                            <!-- <td>{{$post->getTagsTitles()}}</td>
                             <td>
                                 <img src="{{$post->getImage()}}" alt="" width="100">
-                            </td>
+                            </td> -->
                             <td>
                                 <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
                                 {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}

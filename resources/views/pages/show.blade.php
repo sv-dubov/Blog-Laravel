@@ -17,7 +17,7 @@
                         <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
                     </div>
                     <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
+                        <header class="entry-header text-center">
                             @if($post->hasCategory())
                             <h6><a href="{{route('category.show', $post->category->slug)}}"> {{$post->getCategoryTitle()}}</a></h6>
                             @endif

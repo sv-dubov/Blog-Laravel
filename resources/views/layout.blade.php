@@ -34,12 +34,12 @@
                     <a class="navbar-brand" href="/"><img src="/images/logo.png" alt=""></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav text-uppercase">
+                    <ul class="nav navbar-nav">
                         <li><a href="/">Homepage</a></li>
                         <li><a href="about-me.html">ABOUT ME </a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>
-                    <ul class="nav navbar-nav text-uppercase pull-right">
+                    <ul class="nav navbar-nav pull-right">
                         @if(Auth::check())
                         <li><a href="/profile">My profile</a></li>
                         <li><a href="/logout">Logout</a></li>
@@ -79,7 +79,7 @@
     <!--footer start-->
     <div id="footer">
         <div class="footer-instagram-section">
-            <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
+            <h3 class="footer-instagram-title text-center">Instagram</h3>
             <div id="footer-instagram" class="owl-carousel">
                 <div class="item">
                     <a href="#"><img src="/images/ins-1.jpg" alt=""></a>
@@ -120,21 +120,17 @@
                             accusam et justo duo dlores et ea rebum magna text ar koto din.
                         </div>
                         <div class="address">
-                            <h4 class="text-uppercase">contact Info</h4>
-
-                            <p> 142/5 BC Street, ES, VSA</p>
-
+                            <h4 class="">Contact Info</h4>
+                            <p> Rivne, Ukraine</p>
                             <p> Phone: +123 456 78900</p>
-
-                            <p>rahim@marlindev.ru</p>
+                            <p>sv_dubov@ukr.net</p>
                         </div>
                     </aside>
                 </div>
 
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Testimonials</h3>
-
+                        <h3 class="widget-title">Testimonials</h3>
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!--Indicator-->
                             <ol class="carousel-indicators">
@@ -207,13 +203,13 @@
                 </div>
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Custom Category Post</h3>
+                        <h3 class="widget-title">Custom Category Post</h3>
                         <div class="custom-post">
                             <div>
                                 <a href="#"><img src="/images/footer-img.png" alt=""></a>
                             </div>
                             <div>
-                                <a href="#" class="text-uppercase">Home is peaceful Place</a>
+                                <a href="#">Home is peaceful Place</a>
                                 <span class="p-date">February 15, 2016</span>
                             </div>
                         </div>

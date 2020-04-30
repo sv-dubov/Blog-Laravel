@@ -12,11 +12,11 @@
                     <div class="post-thumb">
                         <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
                         <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
+                            <div class="text-center">View Post</div>
                         </a>
                     </div>
                     <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
+                        <header class="entry-header text-center">
                             @if($post->hasCategory())
                             <h6><a href="{{route('category.show', $post->category->slug)}}"> {{$post->getCategoryTitle()}}</a></h6>
                             @endif
@@ -24,7 +24,7 @@
                         </header>
                         <div class="entry-content">
                             {!!$post->description!!}
-                            <div class="btn-continue-reading text-center text-uppercase">
+                            <div class="btn-continue-reading text-center">
                                 <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                             </div>
                         </div>

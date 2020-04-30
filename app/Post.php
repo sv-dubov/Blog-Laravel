@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -54,7 +55,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($fileds);
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
@@ -193,6 +194,11 @@ class Post extends Model
         return $this->category != null ? $this->category->id : null;
     }
 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
     public function getDate()
     {
         return Carbon::createFromFormat('d/m/y', $this->date)->format('F d, Y');
@@ -242,7 +248,7 @@ class Post extends Model
 
     public static function getRecentPosts()
     {
-        return self::orderBy('date','desc')->take(3)->get();
+        return self::orderBy('created_at','desc')->take(3)->get();
     }
 
     public function getComments()
